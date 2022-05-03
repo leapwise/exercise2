@@ -25,8 +25,12 @@ When this API is being called new logical expression should be created and ident
 
 ### Example:
 
+```
 Name: Complex logical expression
-Value: customer.name != "JOHN" && customer.salary < 100 AND (customer.type != null || customer.lastName != 'DOE')
+```
+```
+Value: (customer.firstName == "JOHN" && customer.salary < 100) OR (customer.address != null && customer.address.city == "Washington")
+```
 
 ### API Definition: 
 
@@ -45,6 +49,27 @@ Returns the result of evaluation by using the requested expression and provided 
 ### Workflow:
 
 When this API is being called requested logical expression should be evaluated using the provied JSON object.
+
+### Example:
+
+```
+{
+  "customer":
+  {
+    "firstName": "JOHN",
+    "lastName": "DOE", 
+    "address":
+    {
+      "city": "Chicago",
+      "zipCode": 1234, 
+      "street": "56th", 
+      "houseNumber": 2345
+    },
+    "salary": 99,
+    "type": "BUSINESS"
+  }
+}
+```
 
 ## Additional Information
 You should use following frameworks for your work.
