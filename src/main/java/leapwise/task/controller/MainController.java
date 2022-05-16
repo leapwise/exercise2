@@ -2,6 +2,7 @@ package leapwise.task.controller;
 
 
 
+
 import leapwise.task.persistence.model.RootNode;
 import leapwise.task.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ import leapwise.task.persistence.model.Expression;
 
 @RestController
 public class MainController {
-	
+
 	@Autowired
 	private MainService mainService;
-	
+
 	@PostMapping(path = "/expression")
 	public ResponseEntity<String> postExpression(@RequestBody Expression expression) {
 		String id = mainService.saveExpression(expression);
@@ -33,7 +34,7 @@ public class MainController {
 
 		return ResponseEntity.ok().body(id);
 	}
-	
+
 	@PostMapping(path="/evaluate/{id}")
 	public ResponseEntity<String> postEvaluate(@PathVariable int id, @RequestBody RootNode rootNode) {
 		String result = mainService.executeLogicalExpression(id, rootNode);
