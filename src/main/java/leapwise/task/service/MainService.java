@@ -59,14 +59,6 @@ public class MainService {
 		return result;
 	}
 
-	private String regexBooleanExpression(String boolExpression) {
-		return boolExpression
-				.replaceAll("customer", "expression.customer")
-				.replaceAll("(==)", "===")
-				.replaceAll("\\b((OR)|(or))\\b", "||")
-				.replaceAll("\\b((AND)|(and))\\b", "&&");
-	}
-
 	public String saveExpression(Expression expression) {
 
 		expressionRepo.save(expression);
